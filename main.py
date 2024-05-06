@@ -1,24 +1,23 @@
 from wad_data import WADData
 from settings import *
-from map_renderer import MapRenderer
 import pygame as pg
 import sys
+from map_renderer import MapRenderer
 from player import Player
 from bsp import BSP
 
 
 class DoomEngine:
-    def __init__(self, wad_path = "WAD_Files/DOOM1.WAD") -> None:
+    def __init__(self, wad_path='WAD_Files/DOOM1.WAD'):
         self.wad_path = wad_path
         self.screen = pg.display.set_mode(WIN_RES)
         self.clock = pg.time.Clock()
         self.running = True
-        self.dt = 1/60
-        self.on_init()  #Header 12 bytes: 4 ASCII for Wad type, 4 bytes for number of lumps, 
-                        #4 for an integer holding pointer to directory
-        
+        self.dt = 1 / 60
+        self.on_init()
+
     def on_init(self):
-        self.wad_data = WADData(self, map_name="E1M1")
+        self.wad_data = WADData(self, map_name='E1M1')
         self.map_renderer = MapRenderer(self)
         self.player = Player(self)
         self.bsp = BSP(self)
@@ -27,7 +26,7 @@ class DoomEngine:
         self.player.update()
         self.bsp.update()
         self.dt = self.clock.tick()
-        pg.display.set_caption(f"{self.clock.get_fps():.1f}")
+        pg.display.set_caption(f'{self.clock.get_fps() :.1f}')
 
     def draw(self):
         self.screen.fill('black')
@@ -48,8 +47,21 @@ class DoomEngine:
         sys.exit()
 
 
-
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     doom = DoomEngine()
     doom.run()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
